@@ -441,13 +441,6 @@ on post-fs-data
     chmod 0770 /data/nfc/param
     chown nfc nfc /data/nfc/param
 
-    # Create the directories used by DPM subsystem
-    mkdir /data/dpm 0771 system system
-    chown system system /data/dpm
-
-    mkdir /data/dpm/fdMgr 0771 system system
-    chown system system /data/dpm/fdMgr
-
     mkdir /data/dpm/nsrm 0771 system system
     chown system system /data/dpm/nsrm
 
@@ -495,9 +488,6 @@ on post-fs-data
     #Create directory for FOTA
     mkdir /data/fota 0771
     chown system system /data/fota
-
-    # Create /data/time folder for time-services
-    mkdir /data/time/ 0700 system system
 
     mkdir /data/audio/ 0770 media audio
 
@@ -573,11 +563,6 @@ service thermal-engine /system/vendor/bin/thermal-engine
    socket thermal-send-client stream 0666 system system
    socket thermal-recv-client stream 0660 system system
    socket thermal-recv-passive-client stream 0666 system system
-   group root
-
-service time_daemon /system/vendor/bin/time_daemon
-   class late_start
-   user root
    group root
 
 service qcomsysd /system/vendor/bin/qcom-system-daemon
